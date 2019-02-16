@@ -57,7 +57,7 @@ describe("routes : posts", () => {
 
     it("should return a status code 200 and all lost posts", (done) => {
 
-      request.get(base, (err, res, body) => {
+      request.get(posts/lost, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
         expect(body).toContain("dog");
@@ -71,7 +71,7 @@ describe("routes : posts", () => {
 
     it("should return a status code 200 and all found posts", (done) => {
 
-      request.get(base, (err, res, body) => {
+      request.get(posts/lost, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
         expect(body).toContain("cat");
