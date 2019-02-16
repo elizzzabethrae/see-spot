@@ -2,7 +2,7 @@
   "name": "see-spot",
   "version": "1.0.0",
   "description": "lost and found pet platform",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "export NODE_ENV=test && jasmine"
   },
