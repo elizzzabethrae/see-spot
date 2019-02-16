@@ -1,0 +1,17 @@
+body {
+  padding-top: 54px;
+  background-color: #39a2a2;
+}
+.tile_image {
+    float: left;
+    margin: 0px;
+}
+
+.tile_image img {
+    position:absolute;
+}
+
+.tile_p {
+    text-align:center;
+    position:relative;
+}
