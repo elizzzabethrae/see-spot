@@ -11,53 +11,48 @@ describe("routes : posts", () => {
   this.post;
   sequelize.sync({force: true}).then((res) => {
 
-   Post.create({
-     lost: true,
-     found: false,
-     animal: "dog",
-     color: "black and white",
-     description: "adult laborador, very friendly",
-     date: "02/12/19",
-     other: "found near 28th and Kalamazoo",
-     reunited: false
-   })
-    .then((post) => {
-      this.post = post;
-      done();
-    })
-    .catch((err) => {
-      console.log(err);
-      done();
-    });
-
     Post.create({
-      lost: false,
-      found: true,
-      animal: "cat",
-      color: "orange",
-      description: "adult male cat",
-      date: "02/14/19",
-      other: "found near Baxter",
+      lost: true,
+      found: false,
+      animal: "dog",
+      color: "black and white",
+      description: "adult laborador, very friendly",
+      date: "02/12/19",
+      other: "found near 28th and Kalamazoo",
       reunited: false
     })
-     .then((post) => {
-       this.post = post;
-       done();
+     .then((dogPost) => {
+       this.dogPost = dogPost;
+
+       return Post.create({
+         lost: false,
+         found: true,
+         animal: "cat",
+         color: "orange",
+         description: "adult male cat",
+         date: "02/14/19",
+         other: "found near Baxter",
+         reunited: false
+       })
+      .then((catPost) => {
+        this.catPost = catPost;
+        done();
+      })
      })
      .catch((err) => {
        console.log(err);
        done();
      });
+   });
 
   });
 
-});
 
-  describe("GET /posts/lost", () => {
+  describe("GET posts/lost", () => {
 
     it("should return a status code 200 and all lost posts", (done) => {
 
-      request.get(posts/lost, (err, res, body) => {
+      request.get(`${base}lost`, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
         expect(body).toContain("dog");
@@ -67,11 +62,11 @@ describe("routes : posts", () => {
     });
   });
 
-  describe("GET /posts/found", () => {
+  describe("GET posts/found", () => {
 
     it("should return a status code 200 and all found posts", (done) => {
 
-      request.get(posts/lost, (err, res, body) => {
+      request.get(`${base}found`, (err, res, body) => {
         expect(res.statusCode).toBe(200);
         expect(err).toBeNull();
         expect(body).toContain("cat");

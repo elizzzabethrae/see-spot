@@ -6,6 +6,7 @@ module.exports = {
   lost(req, res, next){
     postQueries.getLostPosts((err, posts) => {
       if(err){
+        console.log("ERROR", err);
         res.redirect(500, "static/index");
       } else {
         res.render("posts/lost", {posts});
@@ -16,6 +17,7 @@ module.exports = {
   found(req, res, next){
     postQueries.getFoundPosts((err, posts) => {
       if(err){
+        console.log("ERROR", err);
         res.redirect(500, "static/index");
       } else {
         res.render("posts/found", {posts});
