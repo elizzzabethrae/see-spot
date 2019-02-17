@@ -11,11 +11,11 @@ module.exports = {
       },
       lost: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: true
       },
       found: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: true
       },
       animal: {
         type: Sequelize.STRING,
@@ -41,7 +41,7 @@ module.exports = {
       reunited: {
         type: Sequelize.BOOLEAN,
         allowNull: false
-        //add default? 
+        //add default?
       },
       createdAt: {
         allowNull: false,
