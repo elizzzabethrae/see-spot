@@ -123,16 +123,16 @@ describe("routes : posts", () => {
   });
 });
 
-// describe("GET /posts/:id", () => {
-//   it("should renter a view of a selected post", (done) =>{
-//     request.get(`${base}${this.catPost.id}`, (err, res, body) => {
-//       expect(err).toBeNull();
-//       expect(body).toContain("adult male cat");
-//       expect(body).toContain("cat");
-//       done();
-//     });
-//   });
-// });
+describe("GET /posts/:id", () => {
+  it("should renter a view of a selected post", (done) =>{
+    request.get(`${base}${this.catPost.id}`, (err, res, body) => {
+      expect(err).toBeNull();
+      expect(body).toContain("adult male cat");
+      expect(body).toContain("cat");
+      done();
+    });
+  });
+});
 
 
 
