@@ -12,7 +12,6 @@
       <ul class="list-group">
 
         <% posts.forEach((post) => { %>
-        <%  if(post.found == true && post.reunited == false) { %>
 
           <li class="list-group-item">
             <p>Found Pet</p>
@@ -23,7 +22,6 @@
             <p> <%= post.other %> </p>
 
           </li>
-          <% } %>
         <% }) %>
       </ul>
 
