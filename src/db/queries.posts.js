@@ -40,4 +40,23 @@ module.exports = {
     })
   },
 
+  addPost(newPost, callback){
+    return Post.create({
+      lost: newPost.lost,
+      found: newPost.found,
+      animal: newPost.animal,
+      color: newPost.color,
+      description: newPost.description,
+      date: newPost.date,
+      other: newPost.other,
+      reunited: newPost.reunited
+    })
+    .then((post) => {
+      callback(null, post);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+
 }

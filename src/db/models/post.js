@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
   var Post = sequelize.define('Post', {
     lost: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true
     },
     found: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true
     },
     animal:{
       type: DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     reunited: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      allowNull: true
     }
   }, {});
   Post.associate = function(models) {

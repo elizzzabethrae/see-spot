@@ -76,5 +76,53 @@ describe("routes : posts", () => {
     });
   });
 
+  describe("GET /posts/new", () => {
+
+   it("should render a new post form", (done) => {
+     request.get(`${base}new`, (err, res, body) => {
+       expect(err).toBeNull();
+       expect(body).toContain("Post a lost or found pet");
+       done();
+     });
+   });
+
+ });
+
+ describe("POST /post/create", () => {
+  const options = {
+    url: `${base}create`,
+    form: {
+      lost: true,
+      found: false,
+      animal: "dog",
+      color: "black and white",
+      description: "black and white adult male dog",
+      date: "02/07/2019",
+      other: "very nice dog",
+      reunited: false
+    }
+  };
+
+  it("should create a new post and redirect", (done) => {
+
+    request.post(options,
+
+      (err, res, body) => {
+        Post.findOne({where: {description:"black and white adult male dog"}})
+        .then((post) => {
+          expect(res.statusCode).toBe(303);
+          expect(post.found).toBe(false);
+          expect(post.description).toBe("black and white adult male dog");
+          done();
+        })
+        .catch((err) => {
+          console.log(err);
+          done();
+        });
+      }
+    );
+  });
+});
+
 
 });
