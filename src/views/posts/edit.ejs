@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../static/partials/head.ejs %>
+  </head>
+  <body>
+    <% include ../static/partials/navbar.ejs %>
+
+    <main class="container">
+
+      <h1>Edit Post</h1>
+
+      <form action="/posts/<% post.id %>/update" method="post">
+
+        <div class="form-group">
+          <label for="lost">Was this pet lost or found?</label>
+          <input value="<%= post.lost %>" type="radio" class="form-control" name="status" aria-describedby="lost">Lost</input>
+          <input value="<%= post.found %>"  type="radio" class="form-control" name="status" aria-describedby="found">Found</input>
+        </div>
+
+        <div class="form-group">
+          <label for="animal">What type of animal is it?</label>
+          <textarea value="<%= post.animal %>"rows="1" class="form-control" name="animal"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="color">What color is the animal?</label>
+          <input value="<%= post.color %>" textarea rows="2" class="form-control" name="color"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Please describe the animal</label>
+          <input value="<%= post.describe %>" textarea rows="4" class="form-control" name="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="date">When was the animal lost/found?</label>
+          <input value="<%= post.date %>" name="date" type="date" value="2019-02-01">
+          <!-- this needs work -->
+        </div>
+
+        <div class="form-group">
+          <label for="other">What other information can you share about the animal?</label>
+          <input value="<%= post.other %>" textarea rows="4" class="form-control" name="other"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="reunited">Has this pet been runited with its owner?</label>
+          <input type="checkbox" class="form-control" name="reunited" aria-describedby="reunited">Yes</input>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+    </main>
+
+    <% include ../static/partials/baseScripts.ejs %>
+
+  </body>
+</html>
