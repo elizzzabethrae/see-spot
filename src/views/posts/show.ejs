@@ -8,27 +8,14 @@
     <main class="container">
       <% include ../static/partials/navbar.ejs %>
 
-      <h1>Lost Animals</h1>
-
-      <ul class="list-group">
-
-        <% posts.forEach((post) => { %>
-
-          <li class="list-group-item">
-            <h4>Lost Pet</h4>
+            <h4>Displaced Pet</h4>
             <p> TYPE: <%= post.animal %> </p>
             <p> COLOR: <%= post.color %> </p>
             <p> DESCRIPTION: <%= post.description %> </p>
             <p> DATE LOST: <%= post.date %> </p>
             <p> OTHER INFORMATION: <%= post.other %> </p>
 
-          </li>
-          <br>
-        <% }) %>
-      </ul>
-
     </main>
-
     <% include ../static/partials/baseScripts.ejs %>
 
   </body>

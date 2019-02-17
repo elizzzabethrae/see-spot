@@ -49,6 +49,16 @@ module.exports = {
         //I CHANGED THIS IF ITS WRONG
       }
     });
-  }
+  },
+
+  show(req, res, next) {
+    postQueries.getPost(req.params.id, (err, topic) => {
+      if(err || post == null) {
+        res.redirect(404, "/");
+      } else {
+        res.render("posts/show", {post});
+      }
+    });
+  },
 
 }
