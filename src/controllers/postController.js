@@ -42,9 +42,11 @@ module.exports = {
     postQueries.addPost(newPost, (err, post) => {
       if(err){
         console.log("ERROR", err);
+      //  req.flash("there was an error");
+      //WHY is that erroring out?
         res.redirect(500, "/posts/new");
       } else {
-        //req.flash("notice", "You've successfully posted an animal!");
+      //  req.flash("notice", "You've successfully posted an animal!");
         res.redirect(303, "/");
         //I CHANGED THIS IF ITS WRONG
       }

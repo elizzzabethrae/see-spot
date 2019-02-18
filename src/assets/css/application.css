@@ -15,3 +15,7 @@ body {
     text-align:center;
     position:relative;
 }
+
+label {
+  font-weight: bold;
+}

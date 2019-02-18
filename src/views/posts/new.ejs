@@ -14,11 +14,11 @@
 
         <div class="form-group">
           <label for="lost">Was this pet lost or found?</label>
-          <input type="radio" class="form-control" name="status" aria-describedby="lost">Lost</input>
-          <input type="radio" class="form-control" name="status" aria-describedby="found">Found</input>
+          <input type="checkbox" class="form-control" name="lost" aria-describedby="lost">Lost</input>
+          <input type="checkbox" class="form-control" name="found" aria-describedby="found">Found</input>
         </div>
-
-
+<!--The name has to be different to submit properly, but the name has to be the same if we want user to choose only one
+-->
         <div class="form-group">
           <label for="animal">What type of animal is it?</label>
           <textarea rows="1" class="form-control" name="animal" placeholder="Cat, Dog, Bird, etc."></textarea>
@@ -42,7 +42,7 @@
 
         <div class="form-group">
           <label for="other">What other information can you share about the animal?</label>
-          <textarea rows="4" class="form-control" name="other" placeholder="Where was the animal found? Is the animal energetic, skiddish, hurt, etc?"></textarea>
+          <textarea rows="4" class="form-control" name="other" placeholder="Where was the animal found? Is the animal energetic, skiddish, hurt, etc? "></textarea>
         </div>
 
         <div class="form-group">
