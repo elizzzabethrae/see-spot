@@ -104,7 +104,6 @@ describe("routes : posts", () => {
   };
 
   it("should create a new post and redirect", (done) => {
-
     request.post(options,
       (err, res, body) => {
         Post.findOne({where: {description:"black and white adult male dog"}})
@@ -134,16 +133,16 @@ describe("GET /posts/:id", () => {
   });
 });
 
-describe("GET /posts/:id/edit", () => {
-  it("Should render a view with an edit post form", (done) => {
-    request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
-      expect(err).toBeNull();
-      expect(body).toContain("adult male cat");
-      expect(body).toContain("cat");
-      done();
-    });
-  });
-});
+// describe("GET /posts/:id/edit", () => {
+//   it("Should render a view with an edit post form", (done) => {
+//     request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
+//       expect(err).toBeNull();
+//       expect(body).toContain("adult male cat");
+//       expect(body).toContain("cat");
+//       done();
+//     });
+//   });
+// });
 
 
 });
