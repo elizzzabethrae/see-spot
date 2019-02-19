@@ -67,11 +67,23 @@ module.exports = {
   edit(req, res, next) {
     postQueries.getPost(req.params.id, (err, post) => {
         if(err || post == null) {
+          console.log("error", err);
           res.redirect(404, "/");
         } else {
           res.render("posts/edit", {post});
         }
     });
   },
+
+  update(req, res, next) {
+    postQueries.updatePost(req.params.id, req.body, (err, topic) => {
+      if(err || post == null) {
+        console.log("Error", err);
+        res.redirect(404, `/posts/${req.params.id}/edit`);
+      } else {
+        res.redirect(`/posts/${post.id}`);
+      }
+    });
+  }
 
 }

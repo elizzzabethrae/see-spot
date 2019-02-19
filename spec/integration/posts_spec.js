@@ -133,16 +133,42 @@ describe("GET /posts/:id", () => {
   });
 });
 
-// describe("GET /posts/:id/edit", () => {
-//   it("Should render a view with an edit post form", (done) => {
-//     request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
-//       expect(err).toBeNull();
-//       expect(body).toContain("adult male cat");
-//       expect(body).toContain("cat");
-//       done();
-//     });
-//   });
-// });
+describe("GET /posts/:id/edit", () => {
+  it("Should render a view with an edit post form", (done) => {
+    request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
+      expect(err).toBeNull();
+      expect(body).toContain("adult male cat");
+      expect(body).toContain("cat");
+      done();
+    });
+  });
+});
+
+describe("POST /posts/:id/update", () => {
+
+  it("should update the post  with the given values", (done) => {
+     const options = {
+        url: `${base}${this.catPost.id}/update`,
+        form: {
+          description: "Male adult cat",
+          animal: "There are a lot of them"
+        }
+      };
+      request.post(options,
+        (err, res, body) => {
+
+        expect(err).toBeNull();
+        Post.findOne({
+          where: { id: this.catPost.id }
+        })
+        .then((post) => {
+          expect(post.description).toBe("Male adult cat");
+          done();
+        });
+      });
+  });
+
+});
 
 
 });
