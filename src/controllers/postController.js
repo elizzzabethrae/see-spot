@@ -37,7 +37,7 @@ module.exports = {
       description: req.body.description,
       date: req.body.date,
       other: req.body.other,
-      reunited: req.body.reunited
+      reunited: req.body.reunited || false
     };
     postQueries.addPost(newPost, (err, post) => {
       if(err){
