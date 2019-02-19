@@ -40,7 +40,7 @@ module.exports = {
       },
       reunited: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: true
         //add default?
       },
       createdAt: {
