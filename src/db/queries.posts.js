@@ -73,7 +73,7 @@ module.exports = {
 
   updatePost(id, updatedPost, callback) {
     return Post.findById(id)
-    .the((post) => {
+    .then((post) => {
       if(!post) {
         return callback ("Post not Found");
       }

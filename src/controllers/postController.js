@@ -70,6 +70,7 @@ module.exports = {
           console.log("error", err);
           res.redirect(404, "/");
         } else {
+          console.log(post);
           res.render("posts/edit", {post});
         }
     });

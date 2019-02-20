@@ -10,27 +10,27 @@
 
       <h1>Edit Post</h1>
 
-      <form action="/posts/<% post.id %>/update" method="post">
+      <form action="/posts/<%= post.id %>/update" method="post">
 
         <div class="form-group">
           <label for="lost">Was this pet lost or found?</label>
-          <input value="<%= post.lost %>" type="checkbox" class="form-control" name="lost" aria-describedby="lost">Lost</input>
-          <input value="<%= post.found %>"  type="checkbox" class="form-control" name="found" aria-describedby="found">Found</input>
+          <input type="checkbox" class="form-control" name="lost" aria-describedby="lost" value="<%= post.lost %>" >Lost</input>
+          <input type="checkbox" class="form-control" name="found" aria-describedby="found" value="<%= post.found %>">Found</input>
         </div>
 
         <div class="form-group">
           <label for="animal">What type of animal is it?</label>
-          <textarea value="<%= post.animal %>" rows="1" class="form-control" name="animal"></textarea>
+          <input rows="1" class="form-control" name="animal" value="<%= post.animal %>" ></textarea>
         </div>
 
         <div class="form-group">
           <label for="color">What color is the animal?</label>
-          <input value="<%= post.color %>" textarea rows="2" class="form-control" name="color"></textarea>
+          <input textarea rows="2" class="form-control" name="color" value="<%= post.color %>"></textarea>
         </div>
 
         <div class="form-group">
           <label for="description">Please describe the animal</label>
-          <input value="<%= post.describe %>" textarea rows="4" class="form-control" name="description"></textarea>
+          <input rows="4" class="form-control" name="description" value="<%= post.description %>"></textarea>
         </div>
 
         <div class="form-group">

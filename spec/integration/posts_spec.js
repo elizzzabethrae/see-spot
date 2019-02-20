@@ -17,7 +17,7 @@ describe("routes : posts", () => {
       animal: "dog",
       color: "black and white",
       description: "adult laborador, very friendly",
-      date: "02/12/19",
+      date: "02/12/2019",
       other: "found near 28th and Kalamazoo",
       reunited: false
     })
@@ -30,7 +30,7 @@ describe("routes : posts", () => {
          animal: "cat",
          color: "orange",
          description: "adult male cat",
-         date: "02/14/19",
+         date: "02/14/2019",
          other: "found near Baxter",
          reunited: false
        })
