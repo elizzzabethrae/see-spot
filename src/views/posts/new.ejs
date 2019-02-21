@@ -5,6 +5,8 @@
   </head>
   <body>
     <% include ../static/partials/navbar.ejs %>
+    <% include ../static/partials/messages.ejs %>
+
 
     <main class="container">
 
@@ -18,6 +20,7 @@
           <input type="checkbox" class="form-control" name="found" aria-describedby="found">Found</input>
         </div>
 <!--The name has to be different to submit properly, but the name has to be the same if we want user to choose only one
+if made different, edit the 'edit' view as well
 -->
         <div class="form-group">
           <label for="animal">What type of animal is it?</label>
@@ -36,8 +39,9 @@
 
         <div class="form-group">
           <label for="date">When was the animal lost/found?</label>
-          <input name="date" type="date" value="2019-02-01">
-          <!-- this needs work -->
+          <input name="date" type="date">
+          <!-- this needs work
+        took out the 'value' attribute-->
         </div>
 
         <div class="form-group">

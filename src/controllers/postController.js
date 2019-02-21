@@ -67,11 +67,35 @@ module.exports = {
   edit(req, res, next) {
     postQueries.getPost(req.params.id, (err, post) => {
         if(err || post == null) {
+          console.log("error", err);
           res.redirect(404, "/");
         } else {
+          console.log(post);
           res.render("posts/edit", {post});
         }
     });
   },
+
+  update(req, res, next) {
+    postQueries.updatePost(req.params.id, req.body, (err, post) => {
+      if(err || post == null) {
+        console.log("Error", err);
+        req.flash("There was an error editing this post, were all elements filled out?")
+       res.redirect(404, "/");
+      } else {
+        res.redirect(`/posts/${post.id}`);
+      }
+    });
+  },
+
+  destroy(req, res, next) {
+    postQueries.deletePost(req.params.id, (err, post) => {
+      if(err) {
+        res.redirect(500, `posts/${post.id}`)
+      } else {
+        res.redirect(303, "/")
+      }
+    });
+  }
 
 }

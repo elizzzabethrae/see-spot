@@ -17,7 +17,7 @@ describe("routes : posts", () => {
       animal: "dog",
       color: "black and white",
       description: "adult laborador, very friendly",
-      date: "02/12/19",
+      date: "02/12/2019",
       other: "found near 28th and Kalamazoo",
       reunited: false
     })
@@ -30,7 +30,7 @@ describe("routes : posts", () => {
          animal: "cat",
          color: "orange",
          description: "adult male cat",
-         date: "02/14/19",
+         date: "02/14/2019",
          other: "found near Baxter",
          reunited: false
        })
@@ -133,16 +133,61 @@ describe("GET /posts/:id", () => {
   });
 });
 
-// describe("GET /posts/:id/edit", () => {
-//   it("Should render a view with an edit post form", (done) => {
-//     request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
-//       expect(err).toBeNull();
-//       expect(body).toContain("adult male cat");
-//       expect(body).toContain("cat");
-//       done();
-//     });
-//   });
-// });
+describe("GET /posts/:id/edit", () => {
+  it("Should render a view with an edit post form", (done) => {
+    request.get(`${base}${this.catPost.id}/edit`, (err, res, body) => {
+      expect(err).toBeNull();
+      expect(body).toContain("adult male cat");
+      expect(body).toContain("cat");
+      done();
+    });
+  });
+});
+
+describe("POST /posts/:id/update", () => {
+
+  it("should update the post  with the given values", (done) => {
+     const options = {
+        url: `${base}${this.catPost.id}/update`,
+        form: {
+          description: "Male adult cat",
+          animal: "There are a lot of them"
+        }
+      };
+      request.post(options,
+        (err, res, body) => {
+
+        expect(err).toBeNull();
+        Post.findOne({
+          where: { id: this.catPost.id }
+        })
+        .then((post) => {
+          expect(post.description).toBe("Male adult cat");
+          done();
+        });
+      });
+  });
+
+});
+
+describe("POST /posts/:id/destroy", () => {
+
+    it("should delete the post with the associated ID", (done) => {
+      Post.all()
+      .then((posts) => {
+        const postCountBeforeDelete = posts.length;
+        expect(postCountBeforeDelete).toBe(1);
+        request.post(`${base}${this.post.id}/destroy`, (err, res, body) => {
+          Post.all()
+          .then((posts) => {
+            expect(err).toBeNull();
+            expect(posts.length).toBe(postCountBeforeDelete - 1);
+            done();
+          })
+        });
+      });
+    });
+  });
 
 
 });

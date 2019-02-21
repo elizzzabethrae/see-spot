@@ -7,13 +7,22 @@
   <body>
     <main class="container">
       <% include ../static/partials/navbar.ejs %>
+      <% include ../static/partials/messages.ejs %>
 
-            <h4>Displaced Pet</h4>
+        <% if(post.lost == true) { %>
+            <h4>Lost Pet</h4>
+            <% } else { %>
+            <h4>Found Pet</h4>
+            <% } %>
             <p> TYPE: <%= post.animal %> </p>
             <p> COLOR: <%= post.color %> </p>
             <p> DESCRIPTION: <%= post.description %> </p>
-            <p> DATE LOST: <%= post.date %> </p>
+            <p> DATE: <%= post.date %> </p>
             <p> OTHER INFORMATION: <%= post.other %> </p>
+            <a href="/posts/<%= post.id %>/edit" class="btn btn-warning">Edit</a>
+            <form style="display:initial" action="/posts/<%= post.id %>/destroy" method="post">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
 
     </main>
     <% include ../static/partials/baseScripts.ejs %>
