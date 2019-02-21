@@ -19,7 +19,7 @@
             <p> TYPE: <%= post.animal %> </p>
             <p> COLOR: <%= post.color %> </p>
             <p> DESCRIPTION: <%= post.description %> </p>
-            <p> DATE LOST: <%= post.date %> </p>
+            <p> DATE LOST: <%= new Date(post.date).getFullYear().toString().concat("-", ("0" + (new Date(post.date).getMonth()+1)).slice(-2).toString(), "-", new Date(post.date).getDate().toString()) %> </p>
             <p> OTHER INFORMATION: <%= post.other %> </p>
             <a href="/posts/<%= post.id %>">See More </a>
 

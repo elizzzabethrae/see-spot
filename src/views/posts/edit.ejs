@@ -38,7 +38,7 @@
 
         <div class="form-group">
           <label for="date">When was the animal lost/found?</label>
-          <input name="date" type="date" value='<%= new Date(post.date).getFullYear().toString().concat("-", (new Date(post.date).getMonth()+1).toString(), "-", new Date(post.date).getDate().toString()) %>'>
+          <input name="date" type="date" value='<%= new Date(post.date).getFullYear().toString().concat("-", ("0" + (new Date(post.date).getMonth()+1)).slice(-2).toString(), "-", new Date(post.date).getDate().toString()) %>'>
         </div>
 
         <div class="form-group">
