@@ -87,6 +87,18 @@ module.exports = {
         callback(err);
       });
     });
+  },
+
+  deletePost(id, callback) {
+    return Post.destroy({
+      where: {id}
+    })
+    .then((post) => {
+      callback(null, post);
+    })
+    .catch((err) => {
+      callback(err);
+    })
   }
 
 }

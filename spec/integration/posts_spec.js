@@ -170,5 +170,24 @@ describe("POST /posts/:id/update", () => {
 
 });
 
+describe("POST /posts/:id/destroy", () => {
+
+    it("should delete the post with the associated ID", (done) => {
+      Post.all()
+      .then((posts) => {
+        const postCountBeforeDelete = posts.length;
+        expect(postCountBeforeDelete).toBe(1);
+        request.post(`${base}${this.post.id}/destroy`, (err, res, body) => {
+          Post.all()
+          .then((posts) => {
+            expect(err).toBeNull();
+            expect(posts.length).toBe(postCountBeforeDelete - 1);
+            done();
+          })
+        });
+      });
+    });
+  });
+
 
 });
