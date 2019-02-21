@@ -8,15 +8,18 @@
 
     <main class="container">
 
+      <% include ../static/partials/messages.ejs %>
+
+
       <h1>Edit Post</h1>
 
       <form action="/posts/<%= post.id %>/update" method="post">
 
-        <div class="form-group">
-          <label for="lost">Was this pet lost or found?</label>
-          <input type="checkbox" class="form-control" name="lost" aria-describedby="lost" value="<%= post.lost %>" >Lost</input>
-          <input type="checkbox" class="form-control" name="found" aria-describedby="found" value="<%= post.found %>">Found</input>
-        </div>
+        <% if(post.lost == true) { %>
+            <h4>Lost Pet</h4>
+            <% } else { %>
+            <h4>Found Pet</h4>
+            <% } %>
 
         <div class="form-group">
           <label for="animal">What type of animal is it?</label>
@@ -35,8 +38,7 @@
 
         <div class="form-group">
           <label for="date">When was the animal lost/found?</label>
-          <input value="<%= post.date %>" name="date" type="date">
-          <!-- this needs work -->
+          <input name="date" type="date" value='<% new Date(post.date).getFullYear().toString().concat("-", new Date(post.date).getDate().toString(), "-", new Date(post.date).getMonth().toString()) %>'>
         </div>
 
         <div class="form-group">

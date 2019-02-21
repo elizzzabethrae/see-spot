@@ -77,10 +77,11 @@ module.exports = {
   },
 
   update(req, res, next) {
-    postQueries.updatePost(req.params.id, req.body, (err, topic) => {
+    postQueries.updatePost(req.params.id, req.body, (err, post) => {
       if(err || post == null) {
         console.log("Error", err);
-        res.redirect(404, `/posts/${req.params.id}/edit`);
+        req.flash("There was an error editing this post, were all elements filled out?")
+       res.redirect(404, "/");
       } else {
         res.redirect(`/posts/${post.id}`);
       }
