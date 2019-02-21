@@ -14,7 +14,7 @@ module.exports = {
      app.use(bodyParser.urlencoded({ extended: true }));
      app.use(expressValidator());
      app.use(session({
-       secret: process.env.cookieSecret,
+       secret: "dogs rule cats drool",
        resave: false,
        saveUninitialized: false,
        cookie: { maxAge: 1.21e9 }
