@@ -24,6 +24,17 @@ module.exports = {
     })
   },
 
+  reunited(req, res, next){
+    postQueries.getReunitedPosts((err, posts) => {
+      if(err){
+        console.log("error", err);
+        res.redirect(500, "static/index");
+      } else {
+        res.render("posts/reunited", {posts})
+      }
+    })
+  },
+
   new(req, res, next) {
     res.render("posts/new");
   },

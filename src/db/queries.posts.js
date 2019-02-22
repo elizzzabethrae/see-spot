@@ -16,7 +16,7 @@ module.exports = {
     return Post.findAll({
       where: {
         lost: true,
-      //  reunited: false
+      //  reunited: (false || null)
       }
     })
     .then((posts) => {
@@ -31,7 +31,21 @@ module.exports = {
     return Post.findAll({
       where: {
         found: true,
-      //  reunited: false
+      //  reunited: (false || null)
+      }
+    })
+    .then((posts) => {
+      callback(null, posts);
+    })
+    .catch((err) => {
+      callback(err);
+    })
+  },
+
+  getReunitedPosts(callback){
+    return Post.findAll({
+      where: {
+        reunited: true
       }
     })
     .then((posts) => {
