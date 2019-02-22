@@ -120,6 +120,30 @@ describe("routes : posts", () => {
       }
     );
   });
+
+  it("should not create a new post that fails validations", (done) => {
+    const options = {
+      url: `${base}create`,
+      form: {
+        title: "a",
+        body: "b"
+      }
+    };
+
+    request.post(options,
+      (err, res, body) => {
+        Post.findOne({where: {title: "a"}})
+        .then((post) => {
+            expect(post).toBeNull();
+            done();
+        })
+        .catch((err) => {
+          console.log(err);
+          done();
+        });
+      }
+    );
+  });
 });
 
 describe("GET /posts/:id", () => {
@@ -151,7 +175,7 @@ describe("POST /posts/:id/update", () => {
         url: `${base}${this.catPost.id}/update`,
         form: {
           description: "Male adult cat",
-          animal: "There are a lot of them"
+          animal: "cat"
         }
       };
       request.post(options,
@@ -177,7 +201,7 @@ describe("POST /posts/:id/destroy", () => {
       .then((posts) => {
         const postCountBeforeDelete = posts.length;
         expect(postCountBeforeDelete).toBe(1);
-        request.post(`${base}${this.post.id}/destroy`, (err, res, body) => {
+        request.post(`${base}${this.catPost.id}/destroy`, (err, res, body) => {
           Post.all()
           .then((posts) => {
             expect(err).toBeNull();
@@ -188,6 +212,8 @@ describe("POST /posts/:id/destroy", () => {
       });
     });
   });
+
+
 
 
 });

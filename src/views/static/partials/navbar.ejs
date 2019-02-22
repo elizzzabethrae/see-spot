@@ -8,7 +8,15 @@
       <a href="/posts/found">Found Pets</a>
       <i class="fas fa-paw"></i>
       <a href="/posts/new" class="last">Post a Pet</a>
-      <div class="clear"></div>
+      <i class="fas fa-paw"></i>
+      <!--div class="clear"></div-->
+      <% if(currentUser) { %>
+        <a href="/users/sign_out">Sign out</a>
+        <i class="fas fa-paw"></i>
+      <% } else { %>
+        <a href="/users/sign_in">Sign in</a>
+        <i class="fas fa-paw"></i>
+        <% }%>
     </div>
   </div>
 </nav>
