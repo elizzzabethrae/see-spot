@@ -16,7 +16,7 @@ module.exports = {
     return Post.findAll({
       where: {
         lost: true,
-      //  reunited: (false || null)
+       // reunited: (false || null)
       }
     })
     .then((posts) => {
@@ -93,6 +93,7 @@ module.exports = {
       }
       post.update(updatedPost, {
         fields: Object.keys(updatedPost)
+        //check if reunited is true, if yes, set lost to false
       })
       .then(() => {
         callback(null, post);
